@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ViewType } from '../App';
 
@@ -9,65 +8,62 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ setView }) => {
   return (
     <div className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden">
-      {/* Background Media */}
+      {/* Background Media - Editorial Grayscale */}
       <div className="absolute inset-0 z-0">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-40 grayscale"
+          className="w-full h-full object-cover opacity-30 grayscale contrast-125"
         >
           <source 
             src="https://assets.mixkit.co/videos/preview/mixkit-beautiful-woman-walking-on-the-beach-at-sunset-40291-large.mp4" 
             type="video/mp4" 
           />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-black/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black"></div>
       </div>
       
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12">
-        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-8 md:space-y-12">
+      <div className="relative z-10 w-full max-w-[1800px] mx-auto px-6 md:px-12">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-12">
           
           <div className="overflow-hidden">
-            <span className="inline-block text-[#C5A059] text-[11px] md:text-[14px] uppercase tracking-[0.8em] md:tracking-[1.2em] font-bold animate-in slide-in-from-bottom duration-1000">
-              Elite Management Agency
+            <span className="inline-block text-[#C5A059] text-[10px] md:text-[12px] uppercase tracking-[1em] font-bold animate-in slide-in-from-bottom duration-1000">
+              Elite Modeling & Management
             </span>
           </div>
           
-          <h1 className="text-[14vw] sm:text-[10vw] md:text-[11vw] font-serif leading-[0.9] text-white tracking-tighter max-w-6xl">
+          <h1 className="text-[18vw] sm:text-[14vw] md:text-[12vw] font-serif leading-[0.85] text-white tracking-tighter">
             Lovelys <br />
-            <span className="italic font-light gold-text">Estudio</span>
+            <span className="italic font-light gold-text ml-[0.1em]">Estudio</span>
           </h1>
 
-          <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center md:items-start w-full">
-            <p className="text-gray-400 text-base md:text-xl font-light leading-relaxed max-w-md opacity-80 md:mx-0 mx-auto">
-              Representamos el estándar de oro en el modelaje digital. Profesionalismo, privacidad y éxito garantizado en el corazón de Chinchiná.
+          <div className="flex flex-col md:flex-row gap-12 md:gap-24 items-center md:items-start w-full">
+            <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed max-w-sm opacity-80 md:mx-0 mx-auto tracking-wide">
+              Redefiniendo el estándar del modelaje digital. Profesionalismo, privacidad y rentabilidad absoluta en <span className="text-white">Chinchiná</span>.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 w-full sm:w-auto">
-              <button 
-                onClick={() => setView('servicios')}
-                className="w-full sm:w-auto px-12 py-5 bg-white text-black font-bold text-[10px] uppercase tracking-[0.4em] transition-all hover:bg-[#C5A059] hover:text-white"
-              >
-                Programas
-              </button>
+            <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
               <button 
                 onClick={() => setView('contacto')}
-                className="w-full sm:w-auto px-12 py-5 border border-white/20 text-white font-bold text-[10px] uppercase tracking-[0.4em] backdrop-blur-md transition-all hover:border-[#C5A059] hover:text-[#C5A059]"
+                className="w-full sm:w-auto px-16 py-6 bg-[#C5A059] text-black font-bold text-[10px] uppercase tracking-[0.5em] transition-all hover:bg-white hover:scale-105 shadow-2xl"
               >
-                Postularse
+                Admisiones
+              </button>
+              <button 
+                onClick={() => setView('servicios')}
+                className="w-full sm:w-auto px-16 py-6 border border-white/20 text-white font-bold text-[10px] uppercase tracking-[0.5em] backdrop-blur-md transition-all hover:border-[#C5A059] hover:text-[#C5A059]"
+              >
+                Explorar
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Vertical Indicator - Desktop Only */}
-      <div className="absolute bottom-16 right-12 hidden lg:flex flex-col items-center space-y-6">
-        <span className="text-[9px] uppercase tracking-[1em] text-white/30 [writing-mode:vertical-lr]">Explora</span>
-        <div className="w-[1px] h-20 bg-gradient-to-b from-[#C5A059] to-transparent"></div>
-      </div>
+      {/* Aesthetic Vertical Line */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-32 w-[1px] bg-gradient-to-b from-white/20 to-transparent"></div>
     </div>
   );
 };

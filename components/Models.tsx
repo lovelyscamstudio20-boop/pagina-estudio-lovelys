@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ViewType } from '../App';
 
@@ -29,7 +30,8 @@ const Models: React.FC<ModelsProps> = ({ setView, previewOnly = false }) => {
           </div>
           {previewOnly && (
             <button 
-              onClick={() => setView('modelos')}
+              // Fix: 'modelos' is no longer a valid ViewType in App.tsx. Redirecting to 'servicios'.
+              onClick={() => setView('servicios')}
               className="text-[10px] uppercase tracking-[0.4em] text-white hover:text-[#C5A059] transition-colors flex items-center gap-4 group"
             >
               Ver Todas <div className="w-10 h-[1px] bg-[#C5A059] group-hover:w-16 transition-all"></div>

@@ -3,14 +3,14 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Models from './components/Models';
 import Services from './components/Services';
 import Studios from './components/Studios';
 import Location from './components/Location';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
-export type ViewType = 'inicio' | 'servicios' | 'estudio' | 'ubicacion' | 'contacto' | 'modelos';
+// Define the available views for navigation. Removed 'modelos'.
+export type ViewType = 'inicio' | 'servicios' | 'estudio' | 'ubicacion' | 'contacto';
 
 const App: React.FC = () => {
   const [view, setView] = useState<ViewType>('inicio');
@@ -27,8 +27,6 @@ const App: React.FC = () => {
         return <Services setView={setView} whatsappNumber={WHATSAPP_NUMBER} />;
       case 'estudio':
         return <Studios setView={setView} />;
-      case 'modelos':
-        return <Models setView={setView} />;
       case 'ubicacion':
         return <Location setView={setView} />;
       case 'contacto':

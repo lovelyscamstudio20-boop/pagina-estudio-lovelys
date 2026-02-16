@@ -1,8 +1,9 @@
 
 import React from 'react';
+import { ViewType } from '../App';
 
 interface ServicesProps {
-  setView: (view: any) => void;
+  setView: (view: ViewType) => void;
   whatsappNumber: string;
 }
 

@@ -21,67 +21,76 @@ const Navbar: React.FC<NavbarProps> = ({ setView, currentView }) => {
 
   const menuItems: { id: ViewType; label: string }[] = [
     { id: 'inicio', label: 'Inicio' },
-    { id: 'servicios', label: 'Servicios' },
-    { id: 'estudio', label: 'El Estudio' },
-    { id: 'ubicacion', label: 'Ubicación' },
-    { id: 'contacto', label: 'Contacto' },
+    { id: 'servicios', label: 'Programas' },
+    { id: 'estudio', label: 'Espacios' },
+    { id: 'modelos', label: 'Portafolio' },
+    { id: 'ubicacion', label: 'Sedes' },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled || currentView !== 'inicio' ? 'bg-black/95 backdrop-blur-lg py-4 shadow-2xl border-b border-gold/10' : 'bg-transparent py-8'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <button onClick={() => setView('inicio')} className="flex items-center space-x-3 group focus:outline-none text-left">
-          <div className="relative w-10 h-10 flex items-center justify-center transition-transform group-hover:scale-110">
-            <svg viewBox="0 0 100 100" className="w-full h-full fill-[#d4af37]">
-              <path d="M35 25 L42 15 L50 22 L58 15 L65 25 L65 30 L35 30 Z" />
-              <path d="M50 35 C35 35 25 45 25 60 C25 80 40 90 50 90 C60 90 75 80 75 60 C75 45 65 35 50 35 M40 55 Q40 50 45 50 M60 55 Q60 50 55 50 M50 70 L45 75 L55 75 Z" />
-            </svg>
+    <nav className={`fixed w-full z-50 transition-all duration-700 ${isScrolled || currentView !== 'inicio' ? 'bg-black/95 backdrop-blur-2xl py-5 border-b border-white/5 shadow-2xl' : 'bg-transparent py-10'}`}>
+      <div className="max-w-[1800px] mx-auto px-8 md:px-16 flex justify-between items-center">
+        <button onClick={() => setView('inicio')} className="flex items-center space-x-4 group focus:outline-none">
+          <div className="relative w-8 h-8 flex items-center justify-center border border-[#C5A059] transition-transform group-hover:rotate-45">
+            <span className="text-[#C5A059] font-serif text-lg font-bold -rotate-45 group-hover:rotate-0 transition-transform">L</span>
           </div>
           <div className="flex flex-col items-start leading-none">
-            <span className="text-md font-serif tracking-[0.2em] gold-text font-bold uppercase">Lovelys Estudio</span>
-            <span className="text-[7px] tracking-[0.4em] text-gray-500 uppercase">Management & Elite Agency</span>
+            <span className="text-sm font-serif tracking-[0.3em] gold-text font-bold uppercase">Lovelys</span>
+            <span className="text-[7px] tracking-[0.5em] text-gray-500 uppercase font-medium mt-1">Elite Studio</span>
           </div>
         </button>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden lg:flex items-center space-x-12">
           {menuItems.map((item) => (
             <button 
               key={item.id}
               onClick={() => setView(item.id)} 
-              className={`text-[10px] uppercase tracking-[0.3em] transition-all relative group font-semibold ${currentView === item.id ? 'text-[#d4af37]' : 'text-gray-400 hover:text-[#d4af37]'}`}
+              className={`text-[9px] uppercase tracking-[0.5em] transition-all relative group font-bold ${currentView === item.id ? 'text-[#C5A059]' : 'text-gray-400 hover:text-white'}`}
             >
               {item.label}
-              <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 h-[1px] bg-[#d4af37] transition-all ${currentView === item.id ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+              <span className={`absolute -bottom-2 left-0 h-[1px] bg-[#C5A059] transition-all ${currentView === item.id ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
             </button>
           ))}
+          
+          <button 
+            onClick={() => setView('contacto')}
+            className="px-8 py-3 border border-[#C5A059] text-[#C5A059] text-[9px] uppercase tracking-[0.4em] font-bold hover:bg-[#C5A059] hover:text-black transition-all"
+          >
+            Contacto
+          </button>
         </div>
 
         {/* Mobile Toggle */}
         <button 
-          className="md:hidden text-[#d4af37] p-2"
+          className="lg:hidden text-[#C5A059] p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={isMobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
-          </svg>
+          <div className="w-8 flex flex-col items-end space-y-1.5">
+            <div className={`h-[1px] bg-[#C5A059] transition-all ${isMobileMenuOpen ? 'w-8 rotate-45 translate-y-[7px]' : 'w-8'}`}></div>
+            <div className={`h-[1px] bg-[#C5A059] transition-all ${isMobileMenuOpen ? 'opacity-0' : 'w-6'}`}></div>
+            <div className={`h-[1px] bg-[#C5A059] transition-all ${isMobileMenuOpen ? 'w-8 -rotate-45 -translate-y-[7px]' : 'w-4'}`}></div>
+          </div>
         </button>
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-black z-[-1] transition-transform duration-500 md:hidden flex flex-col items-center justify-center space-y-8 ${isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+      <div className={`fixed inset-0 bg-black z-[-1] transition-all duration-700 lg:hidden flex flex-col items-center justify-center space-y-10 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
          {menuItems.map((item) => (
             <button 
               key={item.id}
               onClick={() => { setView(item.id); setIsMobileMenuOpen(false); }} 
-              className={`text-2xl font-serif tracking-widest uppercase transition-colors ${currentView === item.id ? 'gold-text' : 'text-gray-500'}`}
+              className={`text-4xl font-serif tracking-widest uppercase transition-all ${currentView === item.id ? 'gold-text scale-110' : 'text-gray-600 hover:text-white'}`}
             >
               {item.label}
             </button>
           ))}
-          <div className="pt-10">
-             <a href="https://wa.me/573224569126" className="px-10 py-4 gold-gradient text-black text-[10px] font-bold uppercase tracking-widest">Postularme</a>
-          </div>
+          <button 
+            onClick={() => { setView('contacto'); setIsMobileMenuOpen(false); }}
+            className="mt-8 px-12 py-5 gold-bg text-black text-[10px] font-bold uppercase tracking-[0.5em]"
+          >
+            Admisiones
+          </button>
       </div>
     </nav>
   );
